@@ -4,6 +4,8 @@
 
 借助jQuery和jCanvas实现
 
+入口：www/index.html
+
 ---
 
 ## 1.0.0.201017_alpha
