@@ -1,0 +1,90 @@
+.main {
+    height: 100%;
+    padding: 3vh 3vw 3vh 3vw;
+}
+
+.main .panel {
+    display: inline-block;
+    position: fixed;
+    width: 35vw;
+    height: 90%;
+    padding: 2vh 0 0 1vw;
+    border-radius: 10px;
+    box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    overflow: auto;
+}
+
+.main .panel .commit {
+    width: 30vw;
+}
+
+.main .panel .commit input {
+    width: 15vw;
+    font-size: 1.5vw;
+}
+
+.main .panel .commit select {
+    width: 4vw;
+    font-size: 1.5vw;
+}
+
+.main .panel .commit button {
+    width: 5vw;
+    font-size: 1.5vw;
+}
+
+.main .panel .things {
+    height: 80%;
+    min-height: 80vh;
+    padding: 0 0 2vh 0;
+}
+
+.main .panel .things div li {
+    display: inline-block;
+    width: 5vw;
+    height: 4vh;
+    padding: 0 2vw 0 2vw;
+    text-align: center;
+}
+
+.main .panel .things div .head {
+    padding: 1vh 2vw 1vh 2vw;
+    margin: 1vh 0 0 0;
+    font-size: 1.5vw;
+    font-weight: bold;
+    background-color: rgba(0, 200, 256, 0.2);
+}
+
+.main .panel .things div .thing {
+    width: 12vw;
+}
+
+.main .panel .things div .ddl {
+    width: 6vw;
+}
+
+.main .panel .things div .state {
+    width: 2vw;
+}
+
+.main .panel .things div .state .check {
+    width: 2vw;
+    height: 2vw;
+    margin: 1vh;
+    background: url("../img/check.png") no-repeat center;
+    background-size: cover;
+}
+
+.main .show {
+    display: inline-block;
+    margin: 0 0 0 40vw;
+    border-radius: 10px;
+    box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+}
+
+#canvas {
+    margin: 1vh 1vw 1vh 1vw;
+    pointer-events: stroke;
+}

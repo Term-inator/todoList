@@ -3,12 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/index.css">
     <title>Document</title>
 </head>
 <body>
-    
+    <div class="main">
+        <div class="panel">
+            <div class="commit">
+                <input type="text" id="thing">
+                <select id="month">
+                </select>
+                <select id="date">
+                </select>
+                <button id="add">添加</button>
+            </div>
+            <div class="things">
+                <div>
+                    <li class="head thing">事件</li>
+                    <li class="head ddl">ddl</li>
+                    <li class="state"></li>
+                </div>
+            </div>
+        </div>
+        <div class="show">
+            <canvas id="canvas" width="770" height="670">
+
+            </canvas>
+        </div>
+    </div>
 </body>
 <script src="js/jquery.min.js"></script>
+<script src="js/jcanvas.min.js"></script>
+<script src="js/func.js"></script>
+<script src="js/data.js"></script>
 <script src="js/index.js"></script>
+<script src="js/draw.js"></script>
+<script src="js/dateSelect.js"></script>
 </html>
