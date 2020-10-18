@@ -56,12 +56,21 @@
     background-color: rgba(0, 200, 256, 0.2);
 }
 
+.main .panel .things div .head:hover, .main .panel .things div .head-active {
+    background-color: rgba(0, 200, 256, 0.4);
+    cursor: pointer;
+}
+
 .main .panel .things div .thing {
     width: 12vw;
 }
 
 .main .panel .things div .ddl {
     width: 6vw;
+}
+
+.main .panel .things div .expire { /*过期样式*/
+    color: red;
 }
 
 .main .panel .things div .state {
