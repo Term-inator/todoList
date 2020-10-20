@@ -11,8 +11,10 @@ $('#add').click(() => {
         if(data.things.find(item => item.thing == thing)) {
             alert('事件"'+thing+'"已存在！');
         }else {
-            addThings(thing, year, month, date, cvs.width/2, cvs.height/2);
+            addThingsOnList(thing, year, month, date, cvs.width/2, cvs.height/2);
+            addThingsOnGraph(thing, year, month, date, cvs.width/2, cvs.height/2);
             $("#thing").val("");
+            reloadList("update");
         }  
     }else {
         alert("事件不能为空！");
@@ -35,17 +37,16 @@ $('.things').on('click', '.check',((e) => {
     }
 }))
 
-$('#ddl').click(() => {
+$('.things').on('click', '#ddl',(() => { //按ddl排序
     if($('#ddl').hasClass("head-active")) {
-        $('#ddl').removeClass("head-active");
+        $('#ddl').removeClass(".head-active");
         data.ddl_sorted = false;
-        window.location.reload();
     }else {
         $('#ddl').addClass("head-active");
         data.ddl_sorted = true;
-        window.location.reload();
     }
-})
+    reloadList("sort");
+}))
 
 function init() {
     $('#month').val(time.month);
@@ -56,6 +57,8 @@ function init() {
 window.onload = function() {
     init();
     loadData();
+    console.log("loaded at " + now.getTime());
+    activateReloadMonitor();
     //clearData();
 }
 

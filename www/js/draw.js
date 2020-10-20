@@ -78,7 +78,7 @@ canvas.drawText({
     text: '不紧急'
 });
 
-function addThings(thing, year, month, date, x, y) {
+function processTime(year, month, date) { //时间格式化
     var time_format = month + "月" + date + "日"; //显示在界面上的ddl格式
     var time_title = time_format; //鼠标悬浮显示的内容
     var time_class = ""; //ddl过期显示红色
@@ -108,12 +108,28 @@ function addThings(thing, year, month, date, x, y) {
         time_format = "已过期";
         time_class = "expire";
     }
+    return {
+        time_format, time_title, time_class
+    }
+}
 
-    //列表中显示事件
+function addThingsOnList(thing, year, month ,date, x, y) { //在List上添加
+    var result = processTime(year, month ,date);
+    var time_format = result.time_format;
+    var time_title = result.time_title;
+    var time_class = result.time_class;
+
     var li_thing = "<li class='thing'>"+thing+"</li>";
     var li_ddl = "<li class='ddl "+time_class+"' title='"+time_title+"'>"+time_format+"</li>";
     var li_check = "<li class='state'><div class='check' data-thing="+thing+"></div></li>";
     $('.things').append("<div>" + li_thing + li_ddl + li_check +"</div>");
+}
+
+function addThingsOnGraph(thing, year, month, date, x, y) { //在象限图上添加
+    var result = processTime(year, month ,date);
+    var time_format = result.time_format;
+    var time_title = result.time_title;
+    var time_class = result.time_class;
 
     var existed_thing = data.things.find(item => item.thing == thing);
     var pre_x ,pre_y ,now_x ,now_y;

@@ -1,4 +1,5 @@
 var now = new Date();
+var previews = now; //上一次的使用时间
 var one_day = 24*60*60*1000;
 var tommorow = new Date(now.getTime() + one_day);
 var after_tommorrow = new Date(tommorow.getTime() + one_day);
@@ -10,12 +11,25 @@ var time = {
     is_lunar: false,
 }
 
-setInterval(() => {
-    now = new Date();
-    if(now.getHours() == 13) {
-        window.location.reload();
+function activateReloadMonitor() {
+    //每天0点到1点之间刷新
+    setInterval(() => {
+        now = new Date();
+        if(now.getHours() == 0) {
+            window.location.reload();
+        }
+    }, 3600000);
+
+    //某次使用时间和上次使用时间（最小单位为天）不同则刷新
+    window.onfocus = function() {
+        now = new Date();
+        if((previews.getFullYear() != now.getFullYear()) || (previews.getMonth() != now.getMonth()) || (previews.getDate() != now.getDate())) {
+            window.location.reload();
+        }
     }
-}, 3600000)
+}
+
+
 
 if(time.year%400 == 0 || (time.year%100 != 0 && time.year%4 == 0)){
     time.is_lunar = true;
