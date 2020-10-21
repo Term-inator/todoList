@@ -61,7 +61,8 @@ function loadList(operation) {
     $('.things').append("<div><li class='head thing'>事件</li><li class='head ddl' id='ddl'>ddl</li><li class='state'></li></div>");
     if(operation == "refresh" || operation == "update") { //刷新页面时 || 更新事件时 重加载List
         things_buffer = data.things.slice(0); //深拷贝 刷新 || 更新时要同步更新things_buffer
-        
+        sortByDdl(); //排序初始化的things_buffer
+
         if(data.ddl_sorted) { //上次要求按ddl排序则延续该设置
             $('#ddl').addClass("head-active");
             sortByDdl();
