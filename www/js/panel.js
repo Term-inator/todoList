@@ -67,17 +67,19 @@ $('.things').on('dblclick', '.thing',(e) => {
 
     $('.modified-by-input').blur((child) => {
         var now_content = $(child.target).val(); //后来键入的内容
-        if(data.things.find(item => item.thing == now_content)) {
-            alert('事件"'+now_content+'"已存在！');
-        }else {
-            if(now_content != '' && now_content != pre_content) {
+
+        if(now_content != '' && now_content != pre_content) {
+            if(data.things.find(item => item.thing == now_content)) {
+                alert('事件"'+now_content+'"已存在！');
+            }else {
                 data.things.find(item => item.thing == pre_content).thing = now_content;
                 reloadList("modify");
                 reloadGraph(); //事件名改变，需要重加载象限
-            }else {
-                $(e.target).html(pre_content);
             }
+        }else {
+            $(e.target).html(pre_content);
         }
+        
     })
 });
 
