@@ -7,9 +7,9 @@ function init() {
 }
 
 window.onload = function() {
-    init();
     loadData();
     console.log("loaded at " + now);
+    init();
     activateReloadMonitor();
     //clearData();
 }
