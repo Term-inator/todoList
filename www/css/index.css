@@ -1,14 +1,14 @@
 .main {
     height: 100%;
-    padding: 3vh 3vw 3vh 3vw;
+    padding: 0 3vw 3vh 0;
 }
 
 .main .panel {
     display: inline-block;
     position: fixed;
-    width: 35vw;
-    height: 90%;
-    padding: 2vh 0 0 1vw;
+    width: 36vw;
+    height: 100%;
+    padding: 2vh 0 0 2vw;
     border-radius: 10px;
     box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.2);
     background-color: #fff;
@@ -20,7 +20,7 @@
 }
 
 .main .panel .commit input {
-    width: 15vw;
+    width: 16vw;
     font-size: 1.5vw;
 }
 
@@ -30,7 +30,7 @@
 }
 
 .main .panel .commit button {
-    width: 5vw;
+    width: 4vw;
     font-size: 1.5vw;
 }
 
@@ -77,6 +77,10 @@
     width: 2vw;
 }
 
+.modified-by-input {
+    position: relative;
+}
+
 .main .panel .things div .state .check {
     width: 2vw;
     height: 2vw;
@@ -87,7 +91,7 @@
 
 .main .show {
     display: inline-block;
-    margin: 0 0 0 40vw;
+    margin: 4vh 0 0 42vw;
     border-radius: 10px;
     box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.2);
     background-color: #fff;

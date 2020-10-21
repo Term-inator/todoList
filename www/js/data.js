@@ -86,13 +86,28 @@ function loadList(operation) {
             })
         }
     }
+    else if(operation == "modify") { //刷新页面时 || 更新事件时 重加载List
+        things_buffer = data.things.slice(0); //深拷贝 刷新 || 更新时要同步更新things_buffer
+        
+        if(data.ddl_sorted) { //上次要求按ddl排序则延续该设置
+            $('#ddl').addClass("head-active");
+            sortByDdl();
+            things_buffer.forEach(e => {
+                addThingsOnList(e.thing, e.ddl.year, e.ddl.month, e.ddl.date, e.position.x, e.position.y);
+            })
+        }else {
+            data.things.forEach(e => {
+                addThingsOnList(e.thing, e.ddl.year, e.ddl.month, e.ddl.date, e.position.x, e.position.y);
+            })
+        }
+    }
     else {
-        console.log("error at function loadList");
-        console.log("invalid parameter operation");
+        console.log("error at function loadList: invalid parameter operation");
     }
 }
 
 function loadGraph() {
+    console.log(data)
     data.things.forEach(e => {
         addThingsOnGraph(e.thing, e.ddl.year, e.ddl.month, e.ddl.date, e.position.x, e.position.y);
     })
@@ -106,4 +121,11 @@ function loadUI() {
 function reloadList(operation) { //operation：执行的操作
     $(".things").empty();
     loadList(operation);
+}
+
+function reloadGraph() {
+    clearGraph();
+    initGraph(); //初始化象限
+    loadGraph();
+    window.location.reload(); //不刷新canvas会把之前的再显示出来，有待优化
 }
