@@ -3,17 +3,22 @@ var mouse_position = {
     y: 0
 }
 
-$('#canvas').mousemove(function(e) {
-    mouse_position.x = e.pageX;
-    mouse_position.y = e.pageY;
-});
+var canvas; //initGraph()中动态创建
 
-var canvas = $('#canvas');
 var cvs = {
-    width: canvas.attr('width'),
-    height: canvas.attr('height')
+    width: 770,
+    height: 670
 }
+
 function initGraph() {
+    $('.show').append("<canvas id='canvas' width='"+cvs.width+"' height='"+cvs.height+"'></canvas>");
+    canvas = $('#canvas');
+
+    $('#canvas').mousemove(function(e) {
+        mouse_position.x = e.pageX;
+        mouse_position.y = e.pageY;
+    });
+
     canvas.drawPath({
         strokeStyle: '#000',
         strokeWidth: 3,
@@ -80,8 +85,7 @@ function initGraph() {
 }
 
 function clearGraph() {
-    canvas.attr('width', cvs.width);
-    canvas.attr('height', cvs.height);
+    $('.show').empty();
 }
 
 function addThingsOnGraph(thing, year, month, date, x, y) { //在象限图上添加

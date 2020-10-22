@@ -158,3 +158,7 @@ function addThingsOnList(thing, year, month ,date, x, y) { //在List上添加
     var li_check = "<li class='state'><div class='check' data-thing="+thing+"></div></li>";
     $('.things').append("<div>" + li_thing + li_ddl + li_check +"</div>");
 }
+
+function clearList() {
+    $(".things").empty();
+}

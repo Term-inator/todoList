@@ -108,6 +108,8 @@ function loadList(operation) {
 }
 
 function loadGraph() {
+    initGraph();
+
     console.log(data)
     data.things.forEach(e => {
         addThingsOnGraph(e.thing, e.ddl.year, e.ddl.month, e.ddl.date, e.position.x, e.position.y);
@@ -120,7 +122,7 @@ function loadUI() {
 }
 
 function reloadList(operation) { //operation：执行的操作
-    $(".things").empty();
+    clearList();
     loadList(operation);
 }
 
@@ -128,5 +130,4 @@ function reloadGraph() {
     clearGraph();
     initGraph(); //初始化象限
     loadGraph();
-    window.location.reload(); //不刷新canvas会把之前的再显示出来，有待优化
 }
