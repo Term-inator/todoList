@@ -14,7 +14,7 @@ function initGraph() {
     $('.show').append("<canvas id='canvas' width='"+cvs.width+"' height='"+cvs.height+"'></canvas>");
     canvas = $('#canvas');
 
-    $('#canvas').mousemove(function(e) {
+    $('.main').mousemove(function(e) {
         mouse_position.x = e.pageX;
         mouse_position.y = e.pageY;
     });

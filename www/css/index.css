@@ -1,6 +1,12 @@
 .main {
     height: 100%;
     padding: 0 3vw 3vh 0;
+    background-color: white;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
 }
 
 .main .panel {
@@ -16,28 +22,55 @@
 }
 
 .main .panel .commit {
-    width: 30vw;
+    display: flex;
+    width: 35vw;
+    height: 4vh;
 }
 
 .main .panel .commit input {
-    width: 16vw;
+    width: 15vw;
+    height: 100%;
     font-size: 1.5vw;
 }
 
-.main .panel .commit select {
-    width: 4vw;
-    font-size: 1.5vw;
+.main .panel .commit .calendar-button-wrapper {
+    display: inline-block;
+    width: flex;
+    height: 5vh;
+    margin: 0 0.8vw 0 0.3vw;
+    vertical-align: middle;
+    cursor: pointer;
 }
+
+.main .panel .commit .calendar-button-wrapper .calendar-button {
+    display: inline-block;
+    width: 5vh;
+    height: 5vh;
+    background: url("../img/calendar.png") no-repeat center;
+    background-size: cover;
+}
+
+.main .panel .commit .calendar-button-wrapper .date-choosed {
+    display: inline-block;
+    height: 4vh;
+    line-height: 4vh;
+    padding: 0 0 3vh 0;
+    vertical-align: middle;
+}
+
 
 .main .panel .commit button {
     width: 4vw;
+    height: 100%;
+    margin: 0.6vh 0 0 0;
     font-size: 1.5vw;
+    cursor: pointer;
 }
 
 .main .panel .things {
     height: 80%;
     min-height: 80vh;
-    padding: 0 0 2vh 0;
+    padding: 1vh 0 2vh 0;
 }
 
 .main .panel .things div li {
@@ -62,11 +95,11 @@
 }
 
 .main .panel .things div .thing {
-    width: 12vw;
+    width: 10vw;
 }
 
 .main .panel .things div .ddl {
-    width: 6vw;
+    width: 8vw;
 }
 
 .main .panel .things div .expire { /*过期样式*/
@@ -87,6 +120,87 @@
     margin: 1vh;
     background: url("../img/check.png") no-repeat center;
     background-size: cover;
+}
+
+.main #calendar {
+    position: absolute;
+    width: flex;
+    height: flex;
+    padding: 4vh 2vw 2vw 2vw;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.2);
+    z-index: -999;
+}
+
+.main #calendar .head {
+    width: 100%;
+    height: flex;
+}
+
+.main #calendar .head .pre {
+    display: inline-block;
+    width: 2vw;
+    height: 2vw;
+    background: url("../img/previous.png") no-repeat center;
+    background-size: cover;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.main #calendar .head .info {
+    display: inline-block;
+    width: 18vw;
+    text-align: center;
+    font-size: 1.5vw;
+    vertical-align: middle;
+}
+
+.main #calendar .head .next {
+    display: inline-block;
+    width: 2vw;
+    height: 2vw;
+    background: url("../img/next.png") no-repeat center;
+    background-size: cover;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.main #calendar .body {
+    width: 100%;
+    height: flex;
+    padding: 2vh 0 0 2vh;
+}
+
+.main #calendar .body .week, .main #calendar .body .day ul {
+    width: 100%;
+    height: 3vw;
+}
+
+.main #calendar .body ul li, .main #calendar .body .day ul li {
+    display: inline-block;
+    width: 3vw;
+    height: 3vw;
+    line-height: 3vw;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.main #calendar .body .day ul .today {
+    border: red solid 2px;
+    border-radius: 5px;
+}
+
+.main #calendar .body .day ul .date {
+    cursor: pointer;
+}
+
+.main #calendar .body .day ul .align { /*为了让日期和星期对齐*/
+    margin: 0 0.35vw 0 0;
+}
+
+.main #calendar .body .day ul .date:hover {
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .main .show {

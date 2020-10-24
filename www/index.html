@@ -12,15 +12,36 @@
         <div class="panel">
             <div class="commit">
                 <input type="text" id="thing">
-                <select id="month">
-                </select>
-                <select id="date">
-                </select>
+                <div class="calendar-button-wrapper">
+                    <div class="calendar-button"></div>
+                    <div class="date-choosed">无期限</div>
+                </div>
                 <button id="add">添加</button>
             </div>
             <div class="things"></div>
         </div>
         <div class="show"></div>
+
+        <div id="calendar">
+            <div class="head">
+                <div class="pre"></div>
+                <div class="info"></div>
+                <div class="next"></div>
+            </div>
+            <div class="body">
+                <ul class="week">
+                    <li>一</li>
+                    <li>二</li>
+                    <li>三</li>
+                    <li>四</li>
+                    <li>五</li>
+                    <li>六</li>
+                    <li>日</li>
+                </ul>
+                <div class="day"></div>
+            </div>
+        </div>
+
     </div>
 </body>
 <script src="js/jquery.min.js"></script>
@@ -30,5 +51,5 @@
 <script src="js/index.js"></script>
 <script src="js/panel.js"></script>
 <script src="js/graph.js"></script>
-<script src="js/dateSelect.js"></script>
+<script src="js/calendar.js"></script>
 </html>

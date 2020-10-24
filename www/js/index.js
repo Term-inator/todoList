@@ -1,15 +1,23 @@
 
+size = {
+    width: $(window).width(),
+    height: $(window).height()
+}
+
+window.onresize = function() {
+    size.width = $(window).width();
+    size.height = $(window).height();
+}
+
 function init() {
-    $('#month').val(time.month);
-    reset_date();
-    $('#date').val(time.date);
+    loadData();
+    console.log("loaded at " + now);
+    initCalendar();
+    activateReloadMonitor();
 }
 
 window.onload = function() {
-    loadData();
-    console.log("loaded at " + now);
     init();
-    activateReloadMonitor();
     //clearData();
 }
 

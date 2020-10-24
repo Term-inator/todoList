@@ -2,7 +2,7 @@ var data = {
     ddl_sorted: false,
     things: []
 }
-var things_buffer = []; //things的缓冲区，用于排序
+var things_sorted = []; //things的缓冲区，用于排序
 
 
 function loadData() {
@@ -29,8 +29,14 @@ function clearData() {
 }
 
 function sortByDdl() {
-    things_buffer.sort(function(a, b) { //按ddl排序
+    things_sorted.sort(function(a, b) { //按ddl排序
         if(a.ddl.year != b.ddl.year) {
+            if(a.ddl.year == '') {
+                return 1;
+            }
+            if(b.ddl.year == '') {
+                return -1;
+            }
             return a.ddl.year - b.ddl.year;
         }
 
@@ -54,51 +60,51 @@ function sortByDdl() {
         }
         return a.thing - b.thing;
     })
-    console.log(things_buffer);
+    console.log(things_sorted);
 }
 
 function loadList(operation) {
     $('.things').append("<div><li class='head thing'>事件</li><li class='head ddl' id='ddl'>ddl</li><li class='state'></li></div>");
     if(operation == "refresh" || operation == "update") { //刷新页面时 || 更新事件时 重加载List
-        things_buffer = data.things.slice(0); //深拷贝 刷新 || 更新时要同步更新things_buffer
-        sortByDdl(); //排序初始化的things_buffer
+        things_sorted = data.things.slice(0); //深拷贝 刷新 || 更新时要同步更新things_sorted
+        sortByDdl(); //排序初始化的things_sorted
 
         if(data.ddl_sorted) { //上次要求按ddl排序则延续该设置
             $('#ddl').addClass("head-active");
             sortByDdl();
-            things_buffer.forEach(e => {
-                addThingsOnList(e.thing, e.ddl.year, e.ddl.month, e.ddl.date, e.position.x, e.position.y);
+            things_sorted.forEach(e => {
+                addThingsOnList(e.thing, e.ddl.year, e.ddl.month, e.ddl.date, e.state, e.position.x, e.position.y);
             })
         }else {
             data.things.forEach(e => {
-                addThingsOnList(e.thing, e.ddl.year, e.ddl.month, e.ddl.date, e.position.x, e.position.y);
+                addThingsOnList(e.thing, e.ddl.year, e.ddl.month, e.ddl.date, e.state, e.position.x, e.position.y);
             })
         }
     }
     else if(operation == "sort") { //如果是因为排序而重加载List，则不需要再次排序；如果是要取消排序，则直接显示data.things即可，不需要调用该函数
         if(data.ddl_sorted) { //上次要求按ddl排序则延续该设置
             $('#ddl').addClass("head-active");
-            things_buffer.forEach(e => {
-                addThingsOnList(e.thing, e.ddl.year, e.ddl.month, e.ddl.date, e.position.x, e.position.y);
+            things_sorted.forEach(e => {
+                addThingsOnList(e.thing, e.ddl.year, e.ddl.month, e.ddl.date, e.state, e.position.x, e.position.y);
             })
         }else {
             data.things.forEach(e => {
-                addThingsOnList(e.thing, e.ddl.year, e.ddl.month, e.ddl.date, e.position.x, e.position.y);
+                addThingsOnList(e.thing, e.ddl.year, e.ddl.month, e.ddl.date, e.state, e.position.x, e.position.y);
             })
         }
     }
     else if(operation == "modify") { //刷新页面时 || 更新事件时 重加载List
-        things_buffer = data.things.slice(0); //深拷贝 刷新 || 更新时要同步更新things_buffer
+        things_sorted = data.things.slice(0); //深拷贝 刷新 || 更新时要同步更新things_sorted
         
         if(data.ddl_sorted) { //上次要求按ddl排序则延续该设置
             $('#ddl').addClass("head-active");
             sortByDdl();
-            things_buffer.forEach(e => {
-                addThingsOnList(e.thing, e.ddl.year, e.ddl.month, e.ddl.date, e.position.x, e.position.y);
+            things_sorted.forEach(e => {
+                addThingsOnList(e.thing, e.ddl.year, e.ddl.month, e.ddl.date, e.state, e.position.x, e.position.y);
             })
         }else {
             data.things.forEach(e => {
-                addThingsOnList(e.thing, e.ddl.year, e.ddl.month, e.ddl.date, e.position.x, e.position.y);
+                addThingsOnList(e.thing, e.ddl.year, e.ddl.month, e.ddl.date, e.state, e.position.x, e.position.y);
             })
         }
     }
