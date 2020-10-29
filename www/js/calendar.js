@@ -86,6 +86,7 @@ $('#calendar').on('click', '.date', (e) => {
 })
 
 function showCalendar() {
+    initCalendar();
     $('#calendar').css('z-index',999);
     if(mouse_position.y < size.height/2) {
         $('#calendar').css('left', mouse_position.x);
@@ -108,6 +109,8 @@ function showCalendar() {
 }
 
 function hideCalendar() {
+    time_required = deepClone(time);
+    offset = 0; //清空之前翻日历的偏移量
     $('#calendar').css('z-index',-999);
 }
 
