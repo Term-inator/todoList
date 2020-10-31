@@ -123,9 +123,11 @@
 }
 
 .main #calendar {
-    position: absolute;
+    position: fixed;
     width: flex;
     height: flex;
+    top: 0;
+    left: 0;
     padding: 4vh 2vw 2vw 2vw;
     background-color: white;
     border-radius: 10px;
