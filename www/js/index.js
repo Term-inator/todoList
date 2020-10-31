@@ -13,7 +13,7 @@ function init() {
     loadData();
     console.log("loaded at " + now);
     initCalendar();
-    activateReloadMonitor();
+    activateReloadMonitor(); 
 }
 
 window.onload = function() {

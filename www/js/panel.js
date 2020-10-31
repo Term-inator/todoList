@@ -18,6 +18,13 @@ function initDateChoosed() {
 function add() { //为了让click和keypress共用
     var thing = $("#thing").val();
     if(thing != "") {
+        for(var i = 0; i < thing.length; ++i) {
+            if(thing[i] == '<' || thing[i] == '>') {
+                alert('输入的内容不能包含"<"或">');
+                return;
+            }
+        }
+
         var year = date_choosed.year;
         var month = date_choosed.month;
         var date = date_choosed.date
@@ -54,12 +61,12 @@ $('.things').on('click', '.check',(e) => {
     if(file == "check") {
         $(e.target).css("backgroundImage","url('./img/check-active.png')");
         //删除
-        var del = $(e.target).data("thing");
+        var del = $(e.target).parent().prev().prev().html();
         data.things.find(item => item.thing == del).state = false;
     }else {
         $(e.target).css("backgroundImage","url('./img/check.png')");
         //取消删除
-        var del_cancel = $(e.target).data("thing");
+        var del_cancel = $(e.target).parent().prev().prev().html();
         data.things.find(item => item.thing == del_cancel).state = true;
     }
 })
@@ -185,7 +192,7 @@ function addThingsOnList(thing, year, month ,date, state, x, y) { //在List上�
 
     var li_thing = "<li class='thing'>"+thing+"</li>";
     var li_ddl = "<li class='ddl "+time_class+"' title='"+time_title+"'>"+time_format+"</li>";
-    var li_check = "<li class='state'><div class='check' data-thing="+thing+"></div></li>";
+    var li_check = "<li class='state'><div class='check'></div></li>";
     $('.things').append("<div>" + li_thing + li_ddl + li_check +"</div>");
     if(state == false) {
         $('.things').children('div :last-child').children('.state').children('.check').css("backgroundImage","url('./img/check-active.png')");
