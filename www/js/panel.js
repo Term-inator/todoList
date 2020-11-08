@@ -131,15 +131,33 @@ $('.things').on('dblclick', '.ddl',(e) => {
         var now_month = date_choosed.month;
         var now_date = date_choosed.date;
         date_choosed.choosed = true;
+
         if(now_year == pre_year && now_month == pre_month && now_date == pre_date) {
             $(e.target).html(pre_show);
         }else {
             var thing = $(e.target).prev().html();
+            console.log(thing);
             data.things.find(item => item.thing == thing).ddl = {year: now_year, month:now_month, date: now_date};
             reloadList("modify");
         }
 
         hideCalendar();
+        //若不解绑，则若先将a、b事件修改到12月1日，再修改a到12月2日，b也会被修改到12月2日
+        //经过测试，发现第二次修改a的ddl时，第一次修改b时绑定的click事件似乎还在运行
+        //不是很优雅，但目前实在是没办法了。。
+        $('#calendar').unbind('click');
+
+        $('#calendar').on('click', '.date', (e) => {
+            date_choosed.year = time_required.year;
+            date_choosed.month = time_required.month;
+            date_choosed.date = parseInt($(e.target).html());
+            date_choosed.choosed = true;
+            if(show) {
+                var result = processTime(date_choosed.year, date_choosed.month ,date_choosed.date);
+                $('.date-choosed').html(result.time_title);
+            }
+            hideCalendar();
+        })
     })
 
     

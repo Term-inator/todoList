@@ -2,7 +2,7 @@ var data = {
     ddl_sorted: false,
     things: []
 }
-var things_sorted = []; //things的缓冲区，用于排序
+var things_sorted = []; //things的缓冲区，用于排序 //可以尝试放入data
 
 
 function loadData() {
@@ -60,7 +60,7 @@ function sortByDdl() {
         }
         return a.thing - b.thing;
     })
-    console.log(things_sorted);
+    //console.log(things_sorted);
 }
 
 function loadList(operation) {
