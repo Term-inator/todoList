@@ -1,5 +1,7 @@
 # todoList
 
+**This repository is no longer maintained. Please go to its new version: [Schedule](https://github.com/Term-inator/Schedule)**
+
 使用四象限法则管理事件
 
 借助jQuery和jCanvas实现
